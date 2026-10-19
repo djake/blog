@@ -3,6 +3,7 @@ import { join } from "node:path";
 import { marked } from "marked";
 
 const SITE_TITLE = "djake";
+const BLUESKY = "https://bsky.app/profile/djake.onahill.co";
 const POSTS_DIR = "posts";
 const OUT = "dist";
 
@@ -39,7 +40,10 @@ const layout = (title, body) => `<!doctype html>
 <style>
   :root { color-scheme: light dark; }
   body { max-width: 40rem; margin: 3rem auto; padding: 0 1rem; font: 18px/1.6 Georgia, serif; }
-  header a { text-decoration: none; color: inherit; font-weight: bold; }
+  header { display: flex; justify-content: space-between; align-items: baseline; }
+  header a { text-decoration: none; color: inherit; }
+  header .home { font-weight: bold; }
+  header a:hover { text-decoration: underline; }
   ul.posts { list-style: none; padding: 0; }
   ul.posts li { margin: .5rem 0; }
   time { color: GrayText; font-size: .9em; margin-right: .75rem; }
@@ -49,7 +53,7 @@ const layout = (title, body) => `<!doctype html>
 </style>
 </head>
 <body>
-<header><a href="/">${esc(SITE_TITLE)}</a></header>
+<header><a class="home" href="/">${esc(SITE_TITLE)}</a><a href="${BLUESKY}" rel="me">Bluesky</a></header>
 <main>
 ${body}
 </main>
