@@ -28,14 +28,6 @@ npm run build && npm run serve
 
 ## Deploy
 
-First time:
+Fly's GitHub integration deploys on every push to `main`. Publishing a post is just commit + push.
 
-```
-fly launch --no-deploy --copy-config   # keep the app name in fly.toml or change it
-fly deploy
-fly certs add djake.onahill.co
-```
-
-Then add DNS at your registrar: `CNAME djake → djake-blog.fly.dev` (`fly certs show djake.onahill.co` confirms the target and cert status).
-
-After that, publishing is just `fly deploy`.
+Custom domain: `djake.onahill.co` has a certificate in the Fly dashboard, with DNS `CNAME djake → djake-blog.fly.dev`.
